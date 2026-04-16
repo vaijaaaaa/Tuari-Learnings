@@ -1,4 +1,5 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { getCurrentUser, logout } from "../../modeles/auth/session";
 
 type Role = "admin" | "user";
 
@@ -42,7 +43,14 @@ function ItemLink({ to, label }: NavItem) {
 }
 
 export function AppShell({ role }: { role: Role }) {
+  const navigate = useNavigate();
+  const user = getCurrentUser();
   const items = role === "admin" ? [...commonItems, ...adminItems] : commonItems;
+
+  function handleLogout() {
+    logout();
+    navigate("/login", { replace: true });
+  }
 
   return (
     <div className="min-h-screen p-4 md:p-6">
@@ -66,8 +74,18 @@ export function AppShell({ role }: { role: Role }) {
               <p className="text-xs uppercase tracking-wide text-slate-500">Environment</p>
               <p className="text-sm font-medium text-slate-900">POC Desktop</p>
             </div>
-            <div className="rounded-full border border-slate-300 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700">
-              Role: {role}
+
+            <div className="flex items-center gap-2">
+              <div className="rounded-full border border-slate-300 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700">
+                {user?.username ?? "Unknown"} ({role})
+              </div>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="rounded-full border border-slate-300 bg-white px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-100"
+              >
+                Logout
+              </button>
             </div>
           </header>
 

@@ -282,3 +282,86 @@ Never rely on UI-only role restrictions.
 - This context file is the working architecture guide for the POC.
 - Update this file whenever scope, phases, schema, or module boundaries change.
 - Every update should continue to follow latest documentation across all used technologies.
+
+## 17) Canonical Project Tree (ASCII)
+Use this as the default file placement map for the POC.
+
+```text
+FramStack-POC/
+|- context.md
+|- README.md
+|- package.json
+|- tsconfig.json
+|- tsconfig.node.json
+|- vite.config.ts
+|- index.html
+|- public/
+|  |- tauri.svg
+|  |- vite.svg
+|- src/
+|  |- main.tsx
+|  |- App.tsx
+|  |- App.css
+|  |- index.css
+|  |- vite-env.d.ts
+|  |- assets/
+|  |- app/
+|  |  |- router.tsx
+|  |  |- layout/
+|  |  |  |- AppShell.tsx
+|  |- modeles/
+|  |  |- auth/
+|  |  |  |- session.ts
+|  |- modules/
+|  |  |- auth/
+|  |  |- dashboard/
+|  |  |- inventory/
+|  |  |- sales/
+|  |  |- purchase/
+|  |  |- analytics/
+|  |  |- admin/
+|  |  |  |- users/
+|  |  |  |- products/
+|  |  |  |- seasons/
+|  |- shared/
+|  |  |- components/
+|  |  |- hooks/
+|  |  |- utils/
+|  |  |- types/
+|  |- services/
+|  |  |- api/
+|  |  |- db/
+|- src-tauri/
+|  |- Cargo.toml
+|  |- build.rs
+|  |- tauri.conf.json
+|  |- capabilities/
+|  |  |- default.json
+|  |- icons/
+|  |- src/
+|  |  |- main.rs
+|  |  |- lib.rs
+|  |  |- commands/
+|  |  |  |- mod.rs
+|  |  |  |- auth.rs
+|  |  |  |- users.rs
+|  |  |  |- products.rs
+|  |  |  |- seasons.rs
+|  |  |  |- inventory.rs
+|  |  |  |- sales.rs
+|  |  |  |- purchase.rs
+|  |  |  |- analytics.rs
+|  |  |- db/
+|  |  |  |- mod.rs
+|  |  |  |- migrations/
+|  |  |  |  |- mod.rs
+|  |  |  |  |- 0001_init.sql
+|  |  |  |- repositories/
+|  |  |- models/
+```
+
+Placement rule:
+- Frontend routing and shell files must stay inside src/app.
+- Frontend session/auth helper stays inside src/modeles/auth.
+- Tauri commands stay inside src-tauri/src/commands.
+- SQLite bootstrap and migrations stay inside src-tauri/src/db.
