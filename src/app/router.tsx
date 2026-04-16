@@ -6,7 +6,10 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { AppShell } from "./layout/AppShell";
-import { getCurrentRole, getCurrentUser, login } from "../modeles/auth/session";
+import { getCurrentRole, getCurrentUser, login } from "../modules/auth/session";
+import UsersPage from "../modules/admin/users/UsersPage";
+import ProductsPage from "../modules/admin/products/ProductsPage";
+import SeasonsPage from "../modules/admin/seasons/SeasonsPage";
 
 type Role = "admin" | "user";
 
@@ -119,9 +122,9 @@ export const router = createBrowserRouter([
         element: <RoleGuard allow={["admin"]} />,
         children: [
           { path: "/admin", element: <Page title="Admin" /> },
-          { path: "/users", element: <Page title="Users" /> },
-          { path: "/products", element: <Page title="Products" /> },
-          { path: "/seasons", element: <Page title="Seasons" /> },
+          { path: "/users", element: <UsersPage /> },
+          { path: "/products", element: <ProductsPage /> },
+          { path: "/seasons", element: <SeasonsPage /> },
           { path: "/settings", element: <Page title="Settings" /> },
         ],
       },
