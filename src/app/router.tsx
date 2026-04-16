@@ -7,6 +7,10 @@ import {
 } from "react-router-dom";
 import { AppShell } from "./layout/AppShell";
 import { getCurrentRole, getCurrentUser, login } from "../modules/auth/session";
+import AnalyticsPage from "../modules/analytics/AnalyticsPage";
+import InventoryPage from "../modules/inventory/InventoryPage";
+import PurchasePage from "../modules/purchase/PurchasePage";
+import SalesPage from "../modules/sales/SalesPage";
 import UsersPage from "../modules/admin/users/UsersPage";
 import ProductsPage from "../modules/admin/products/ProductsPage";
 import SeasonsPage from "../modules/admin/seasons/SeasonsPage";
@@ -114,10 +118,10 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Navigate to="/dashboard" replace /> },
       { path: "/dashboard", element: <Page title="Dashboard" /> },
-      { path: "/inventory", element: <Page title="Inventory" /> },
-      { path: "/sales", element: <Page title="Sales" /> },
-      { path: "/purchase", element: <Page title="Purchase" /> },
-      { path: "/analytics", element: <Page title="Analytics" /> },
+      { path: "/inventory", element: <InventoryPage /> },
+      { path: "/sales", element: <SalesPage /> },
+      { path: "/purchase", element: <PurchasePage /> },
+      { path: "/analytics", element: <AnalyticsPage /> },
       {
         element: <RoleGuard allow={["admin"]} />,
         children: [

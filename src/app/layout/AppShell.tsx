@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { getCurrentUser, logout } from "../../modeles/auth/session";
+import { getCurrentUser, logout } from "../../modules/auth/session";
 
 type Role = "admin" | "user";
 

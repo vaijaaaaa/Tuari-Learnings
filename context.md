@@ -309,11 +309,9 @@ FramStack-POC/
 |  |  |- router.tsx
 |  |  |- layout/
 |  |  |  |- AppShell.tsx
-|  |- modeles/
-|  |  |- auth/
-|  |  |  |- session.ts
 |  |- modules/
 |  |  |- auth/
+|  |  |  |- session.ts
 |  |  |- dashboard/
 |  |  |- inventory/
 |  |  |- sales/
@@ -362,6 +360,6 @@ FramStack-POC/
 
 Placement rule:
 - Frontend routing and shell files must stay inside src/app.
-- Frontend session/auth helper stays inside src/modeles/auth.
+- Frontend session/auth helper stays inside src/modules/auth.
 - Tauri commands stay inside src-tauri/src/commands.
 - SQLite bootstrap and migrations stay inside src-tauri/src/db.
